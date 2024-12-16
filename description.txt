@@ -1,0 +1,10 @@
+Application description
+1. Open url with the password generator website.
+2. There are greetings and description. There is also empty field for the password.
+3. User sees 2 password types to choose, radio button: 1) word password and 2) phrase password.
+4. There's a field to input number of words that should be in the password.
+5. There are 3 checkboxes: 1) add numbers + input field how many (2 to 15 max, 2 by default)
+2) add special symbols + input field how many (2 to 15 max, 2 by default)
+3) replace common letters with special symbols: E -> %, T -> &, A -> @, O -> (), I -> !, N -> #, S -> $
+6. After that there is a button: "Generate password" which generates and shows password in the field.
+7. Near the generated password must be a button "Copy Password"
