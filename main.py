@@ -8,11 +8,11 @@ special_symbols_dict = {'E':'%', 'T':'&', 'A':'@', 'O':'()', 'I':'!', 'N':'#', '
 print("Welcome to the Memorable Password Generator!")
 password_type = input("What type of password do you want to create? words or phrase\n").lower()
 words_amount = int(input("How many words you want in your password?\n"))
+replace_letters = bool(input("Would you like to replace some common letters with special characters: True or False?\n").upper())
 add_numbers = bool(input("Add numbers: True or False\n").upper())
 numbers_amount = int(input("How many numbers you want in your password?\n"))
 add_symbols = bool(input("Add special characters: True or False\n").upper())
 symbols_amount = int(input("How many symbols you want in your password?\n"))
-replace_letters = bool(input("Would you like to replace some common letters with special characters: True or False?\n").upper())
 
 #TODO: Get information from the website (when user clicks "Generate password")
 #TODO: Generate password
@@ -44,7 +44,11 @@ def replace_letters_to_symbols(password, special_symbols_dict):
 def add_numbers_to_password(password, numbers_amount):
     for n in range(numbers_amount):
         number = str(random.randint(0,9))
-        password += number
+        add = random.randint(0,1)
+        if add == 0:
+            password = number + password
+        else:
+            password = password + number
     return password
 
 
@@ -64,7 +68,9 @@ if password_type == "words":
 elif password_type == "phrase":
     generated_password = create_phrase_password(words_amount)
 
+print(replace_letters)
 if replace_letters:
+    print(replace_letters)
     generated_password = replace_letters_to_symbols(generated_password, special_symbols_dict)
 
 if add_numbers:
