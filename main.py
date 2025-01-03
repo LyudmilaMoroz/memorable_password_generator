@@ -6,12 +6,12 @@ special_symbols_dict = {'E':'%', 'T':'&', 'A':'@', 'O':'()', 'I':'!', 'N':'#', '
 
 ##TODO: Get password rules from user
 print("Welcome to the Memorable Password Generator!")
-password_type = input("What type of password do you want to create? words or phrase\n").lower()
+password_type = input("What type of password do you want to create? words or phrase\n").capitalize()
 words_amount = int(input("How many words you want in your password?\n"))
-replace_letters = bool(input("Would you like to replace some common letters with special characters: True or False?\n").upper())
-add_numbers = bool(input("Add numbers: True or False\n").upper())
+replace_letters = input("Would you like to replace some common letters with special characters: True or False?\n").capitalize()
+add_numbers = input("Add numbers: True or False\n").capitalize()
 numbers_amount = int(input("How many numbers you want in your password?\n"))
-add_symbols = bool(input("Add special characters: True or False\n").upper())
+add_symbols = input("Add special characters: True or False\n").capitalize()
 symbols_amount = int(input("How many symbols you want in your password?\n"))
 
 #TODO: Get information from the website (when user clicks "Generate password")
@@ -63,20 +63,18 @@ def show_password(password):
     print(f"Your new password: {password}")
 
 
-if password_type == "words":
+if password_type == "Words":
     generated_password = create_words_password(words_amount)
-elif password_type == "phrase":
+elif password_type == "Phrase":
     generated_password = create_phrase_password(words_amount)
 
-print(replace_letters)
-if replace_letters:
-    print(replace_letters)
+if replace_letters == "True":
     generated_password = replace_letters_to_symbols(generated_password, special_symbols_dict)
 
-if add_numbers:
+if add_numbers == "True":
     generated_password = add_numbers_to_password(generated_password, numbers_amount)
 
-if add_symbols:
+if add_symbols == "True":
     generated_password = add_symbols_to_password(generated_password, symbols_list, symbols_amount)
 
 show_password(generated_password)
